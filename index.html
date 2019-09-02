@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>声纹采集入库平台</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="icon" type="img/png" sizes="96x96" href="img/logo.png">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="assets/datepicker/css/datepicker.css">
+    <link rel="stylesheet" href="assets/bootstrap-validator/bootstrapValidator.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div class="allCont">
+    <div class="header">
+        <div class="left">
+            <img src="img/logo.png" alt="">
+            <span>声纹采集入库平台</span>
+        </div>
+        <div class="mid">
+            <ul class="nav nav-tabs tabClick">
+                <li class="active"><a href="index.html">声纹采集</a></li>
+                <li><a href="vioceLibrary.html">声纹库</a></li>
+                <li><a href="equipment.html">设备管理</a></li>
+            </ul>
+        </div>
+        <div class="right">
+            <div id="navbar-menu">
+                <img src="img/person.png" alt="">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <button type="button" class="dropdown-toggle btn-com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            欢迎您 <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="javascript:;" class="logout"><i class="lnr lnr-exit"></i> <span>退出登录</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="contain">
+        <div class="tab-content">
+            <div class="row">
+                    <div class="col-md-3">
+                        <div class="tone-quality">
+                            <div class="toneTop">
+                                <div class="toneTip">
+                                    <img src="img/xinxi.png" alt="">
+                                    <span>音频质量</span>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <span>信噪比:</span>
+                                        <span class="noiseRatio">0</span>
+                                        <span>dB</span>
+                                    </li>
+                                    <li>
+                                        <span>分贝数:</span>
+                                        <span class="decibel">0</span>
+                                        <span>dB</span>
+                                    </li>
+                                    <li>
+                                        <span>有效时长:</span>
+                                        <span class="duration">0</span>
+                                        <span>s</span>
+                                    </li>
+                                    <li>
+                                        <span>截幅比例:</span>
+                                        <span class="clipping">0</span>
+                                        <span>%</span>
+                                    </li>
+                                    <li>
+                                        <span>平均能量:</span>
+                                        <span class="energy">0</span>
+                                        <span>dB</span>
+                                    </li>
+                                    <li>
+                                        <span>人数:</span>
+                                        <span class="userNumber">0</span>
+                                        <span>人</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <p class="toneResult">未检测到音频文件</p>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="soundRecord">
+                            <div class="recordImg">
+                                <div class="luyinCont">
+                                    <img class="waveformGif" src="img/waveform.gif" alt="">
+                                    <audio id="luyinAudio" controls autoplay style="display:none"></audio>
+                                </div>
+                                <div class="waveSurfer">
+                                    <div id="waveform"></div>
+                                </div>
+                            </div>
+
+                            <div class="recordOperation">
+                                <div class="timeCont">
+                                    <p class="time">00:00:00</p>
+                                    <p class="playTime"><span class="currTime">00:00:00</span><i style="font-style: normal;padding: 0 4px 0 6px">|</i><span class="durationTime">00:00:00</span></p>
+                                </div>
+                                <div class="btnCont">
+                                    <button id="handleClickBtn" class="startPlay" disabled="true"><img src="img/startPlay.png" alt=""></button>
+                                    <button id="btn-active" class="btn-start"><img src="img/startRecord.png" alt=""></button>
+                                    <button class="btn-replace" disabled="true"><img src="img/shuaxin.png" alt=""></button>
+                                    <button class="btn-testStart" id="btn-test">开始检测</button>
+                                </div>
+                                <div class="desCont">
+                                    <p>提示：录制时长不低于120秒，发言人数请勿超过1人</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="row">
+                    <div class="col-md-12">
+                        <div class="basicInfo">
+                            <div class="infoHead">
+                                <img src="img/ID.png" alt="">
+                                <span>基本信息</span>
+                                <i></i>
+                            </div>
+                            <div class="formCont">
+                                <form class="form-horizontal" id="form">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="subjectId" class="col-sm-3 control-label"><span class="mustFill">*</span>选择专题</label>
+                                                <div class="col-sm-9">
+                                                    <select class="form-control" id="subjectId" name="subjectId">
+                                                        <option value="1">重点人员黑名单</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="depositoryId" class="col-sm-3 control-label"><span class="mustFill">*</span>归属库</label>
+                                                <div class="col-sm-9">
+                                                    <select class="form-control" id="depositoryId" name="depositoryId">
+                                                        <option value="1">北京声纹库</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="audioUserIdNumber" class="col-sm-3 control-label"><span class="mustFill">*</span>身份证号</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="audioUserIdNumber" maxlength="18" name="audioUserIdNumber" placeholder="请输入身份证号">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="audioUserName" class="col-sm-3 control-label"><span class="mustFill">*</span>姓名</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="audioUserName" name="audioUserName" placeholder="请输入姓名">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="audioUserSex" class="col-sm-3 control-label"><span class="mustFill">*</span>性别</label>
+                                                <div class="col-sm-9">
+                                                    <select class="form-control" id="audioUserSex" name="audioUserSex">
+                                                        <option value="1">男</option>
+                                                        <option value="2">女</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="birthTime" class="col-sm-3 control-label"><span class="mustFill">*</span>出生日期</label>
+                                                <div class="col-sm-9">
+                                                    <div class="form-control c-datepicker-date-editor c-datepicker-single-editor J-datepicker-day mt10">
+                                                        <input type="text" autocomplete="off" name="birthTime" id="birthTime" placeholder="选择日期" class="c-datepicker-data-input" value="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="audioUserBirthOrigin" class="col-sm-3 control-label"><span class="mustFill">*</span>籍贯</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="audioUserBirthOrigin" name="audioUserBirthOrigin" placeholder="请输入籍贯">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="audioUserBirthPlace" class="col-sm-3 control-label">出生地</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" oninput="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')" class="form-control" id="audioUserBirthPlace" name="audioUserBirthPlace" placeholder="请输入出生地">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="audioUserHabitation" class="col-sm-3 control-label">长期居住地</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" oninput="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')" class="form-control" id="audioUserHabitation" name="audioUserHabitation" placeholder="请输入长期居住地">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="audioUserNation" class="col-sm-3 control-label">民族</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" oninput="value=value.replace(/[^\a-\z\A-\Z\u4E00-\u9FA5]/g,'')" class="form-control" id="audioUserNation" name="audioUserNation" placeholder="请输入民族">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="audioUserDialect" class="col-sm-3 control-label">方言</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" oninput="value=value.replace(/[^\a-\z\A-\Z\u4E00-\u9FA5]/g,'')" class="form-control" id="audioUserDialect" name="audioUserDialect" placeholder="请输入方言">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="audioUserLanguages" class="col-sm-3 control-label">语种</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" oninput="value=value.replace(/[^\a-\z\A-\Z\u4E00-\u9FA5]/g,'')" class="form-control" id="audioUserLanguages" name="audioUserLanguages" placeholder="请输入语种">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="audioUserSchooling" class="col-sm-3 control-label">学历</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" oninput="value=value.replace(/[^\a-\z\A-\Z\u4E00-\u9FA5]/g,'')" class="form-control" id="audioUserSchooling" name="audioUserSchooling" placeholder="请输入学历">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="audioUserOccupation" class="col-sm-3 control-label">职业</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" oninput="value=value.replace(/[^\a-\z\A-\Z\u4E00-\u9FA5]/g,'')" class="form-control" id="audioUserOccupation" name="audioUserOccupation" placeholder="请输入职业">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="audioUserPhoneNumber" class="col-sm-3 control-label">联系电话</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" oninput="value=value.replace(/[^\d]/g,'')" id="audioUserPhoneNumber" name="audioUserPhoneNumber" placeholder="请输入联系电话">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="audioUserAddress" class="col-sm-3 control-label">联系地址</label>
+                                                <div class="col-sm-9">
+                                                    <textarea class="form-control" rows="3" name="audioUserAddress" id="audioUserAddress"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="audioUserComment" class="col-sm-3 control-label">备注</label>
+                                                <div class="col-sm-9">
+                                                    <textarea class="form-control" rows="3" name="audioUserComment" id="audioUserComment"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group submitBtnParent">
+                                                <button type="button" class="btn btn-customStyle" id="submitBtn" disabled="true">完成采集</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<!--<script src="https://gosspublic.alicdn.com/aliyun-oss-sdk-4.4.4.min.js"></script>-->
+<script src="assets/datepicker/js/datepicker.all.min.js"></script>
+<script src="assets/bootstrap-validator/bootstrapValidator.min.js"></script>
+<script src="assets/datepicker/js/moment.min.js"></script>
+<script src="assets/layer/layer.js"></script>
+<script src="js/wavesurfer.min.js"></script>
+<script src="js/recoder.js"></script>
+<script src="js/recoderTest.js"></script>
+<script src="js/common.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

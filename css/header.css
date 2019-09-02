@@ -1,0 +1,82 @@
+html,body{
+    height: 100%;
+    width: 100%;
+    background: #A0A6B4;
+}
+.header{
+    height: 72px;
+    width: 100%;
+    background: #334266;
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    padding: 0 40px;
+}
+.left img{
+    width: 50px;
+    padding-top: 9px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 12px;
+}
+.right img{
+    width: 24px;
+    padding-top: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+.left span{
+    padding-top: 15px;
+    font-size: 20px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.right .navbar-nav{
+    margin-top: 24px;
+}
+.btn-com{
+    background: transparent;
+    border: none;
+}
+.navbar-nav > li > .dropdown-menu{
+    margin-top: 29px;
+}
+#myTab{
+    margin-top: 25px;
+}
+.nav-tabs{
+    border-bottom: none;
+}
+.nav-tabs > li > a{
+    padding:0px 30px;
+    border:none;
+    margin-right: 0;
+    background: #334266;
+    color: #fff;
+    height: 72px;
+    line-height:72px;
+    border-radius:0;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+    border:none;
+    background: -webkit-linear-gradient(right,#10295D,#4563A0);
+    background: -o-linear-gradient(right,#10295D,#4563A0);
+    background: -moz-linear-gradient(right,#10295D,#4563A0);
+    background: -mos-linear-gradient(right,#10295D,#4563A0);
+    background: linear-gradient(right,#10295D,#4563A0);
+    color: #fff;
+}
+
+.nav-tabs > li > a:hover{
+    background: -webkit-linear-gradient(right,#10295D,#4563A0);
+    background: -o-linear-gradient(right,#10295D,#4563A0);
+    background: -moz-linear-gradient(right,#10295D,#4563A0);
+    background: -mos-linear-gradient(right,#10295D,#4563A0);
+    background: linear-gradient(right,#10295D,#4563A0);
+    color: #fff;
+}
+.tabClick{
+    /*margin-top: 25px;*/
+}

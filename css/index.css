@@ -1,0 +1,202 @@
+.contain{
+    padding: 24px 42px;
+}
+.tone-quality{
+    background: #334266;
+    padding: 2px;
+    margin-bottom: 20px;
+}
+.toneTop{
+    background: #fff;
+}
+.toneTip{
+    border-bottom: 1px solid #334266;
+    padding: 0 20px;
+    height: 44px;
+    line-height: 44px;
+}
+.toneTip img{
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+.toneTip span{
+    font-size: 18px;
+    color: #334266;
+    display: inline-block;
+    vertical-align: sub;
+}
+
+.toneTop ul{
+    padding:0 20px;
+}
+.toneTop ul li{
+    padding: 8px 0;
+    border-bottom: 1px solid #EEEEEE;
+    display: flex;
+    justify-content: space-between;
+}
+.toneTop ul li span:first-child{
+    display: inline-block;
+    width: 60px;
+    text-align: right;
+}
+.toneTop ul li span:nth-child(3){
+    display: inline-block;
+    width: 16px;
+    text-align: right;
+}
+.toneResult{
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+    color: #ffffff;
+}
+.soundRecord{
+    height: 310px;
+    background: #fff;
+    padding: 18px;
+    margin-bottom: 20px;
+}
+.playTime{
+    display: none;
+}
+.recordImg{
+    width: 100%;
+    height: 200px;
+    background: #222730;
+    position: relative;
+}
+.recordImg .waveformGif{
+    width: 100%;
+    height: 140px;
+    margin-top: 30px;
+    display: none;
+}
+/*#range{*/
+    /*opacity: 0;*/
+    /*height: 0;*/
+/*}*/
+/*#myCanvas{*/
+    /*display: block;*/
+    /*position: absolute;*/
+    /*width: 100%!important;*/
+/*}*/
+.recordOperation{
+    margin-top: 24px;
+    position: relative;
+}
+.recordOperation .timeCont{
+    position: absolute;
+    left: 0;
+    top:0;
+    line-height: 46px;
+}
+.recordOperation .desCont{
+    position: absolute;
+    right: 0;
+    top:0;
+    line-height: 46px;
+    font-size: 12px;
+}
+.recordOperation .btnCont{
+    text-align: center;
+}
+.recordOperation .btnCont button{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    padding: 0;
+    margin:0 20px;
+    vertical-align: middle;
+    outline: none;
+    background: transparent;
+    border: none;
+}
+
+
+.basicInfo{
+    background: #fff;
+}
+.basicInfo .infoHead{
+    height: 44px;
+    padding: 0 20px;
+    line-height: 44px;
+    border-bottom: 2px solid #EEEEEE;
+    position: relative;
+}
+.basicInfo .infoHead i{
+    display: inline-block;
+    width: 170px;
+    height: 2px;
+    background: #334266;
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+}
+.basicInfo .infoHead img{
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+.basicInfo .infoHead span{
+    font-size: 18px;
+    color: #334266;
+    display: inline-block;
+    vertical-align: sub;
+}
+
+.formCont{
+    padding: 20px;
+}
+label.col-sm-3{
+    padding-right: 0;
+}
+.submitBtnParent{
+    margin:20px 0;
+    text-align: center;
+}
+#submitBtn{
+    padding: 6px 40px;
+}
+/*#submitBtn:hover{*/
+    /*background: #2D5FB8;*/
+/*}*/
+
+.mustFill{
+    color: red;
+    margin-right: 4px;
+}
+.status{
+    margin-top: 10px;
+}
+.status button{
+    margin-right: 16px;
+}
+.status button:focus{
+    background: #334266;
+    color: #fff;
+}
+.activeBtn{
+    background: #334266;
+    color: #fff;
+}
+
+
+.recordOperation .btnCont button#btn-test{
+    width: auto;
+    height: 30px;
+    border-radius: 4px;
+    padding: 0;
+    margin: 0 20px;
+    vertical-align: middle;
+    outline: none;
+    background: transparent;
+    border: none;
+    background: #395AA8;
+    padding: 0 12px;
+    color: #fff;
+}
+
+

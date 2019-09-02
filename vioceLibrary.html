@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>声纹采集入库平台</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="icon" type="img/png" sizes="96x96" href="img/logo.png">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="assets/datepicker/css/datepicker.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/vioceLibrary.css">
+</head>
+<body>
+<div class="allCont">
+    <div class="header">
+        <div class="left">
+            <img src="img/logo.png" alt="">
+            <span>声纹采集入库平台</span>
+        </div>
+        <div class="mid">
+            <ul class="nav nav-tabs tabClick">
+                <li><a href="index.html">声纹采集</a></li>
+                <li class="active"><a href="vioceLibrary.html">声纹库</a></li>
+                <li><a href="equipment.html">设备管理</a></li>
+            </ul>
+        </div>
+        <div class="right">
+            <div id="navbar-menu">
+                <img src="img/person.png" alt="">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <button type="button" class="dropdown-toggle btn-com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            欢迎您 <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="javascript:;" class="logout"><i class="lnr lnr-exit"></i> <span>退出登录</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="contain">
+        <div class="tab-content">
+            <div class="profileCont">
+                <div class="row">
+                    <div class="col-md-12" id="audioUserStatus">
+                        <div class="status">
+                            <a href="javascript:;" class="activeStatue" data-status="1">待入库</a>
+                            <a href="javascript:;" data-status="3">入库失败</a>
+                            <a href="javascript:;" data-status="2">已入库</a>
+                        </div>
+                    </div>
+                </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form class="form-inline" id="tableForm">
+                                <div class="form-group">
+                                    <label for="tableUserName">姓名</label>
+                                    <input type="text" class="form-control" name="tableUserName" id="tableUserName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="tableIDNumber">身份证号</label>
+                                    <input type="text" class="form-control" name="tableIDNumber" id="tableIDNumber">
+                                </div>
+                                <div class="form-group">
+                                    <label for="tableGender">性别</label>
+                                    <select class="form-control" id="tableGender" name="tableGender">
+                                        <option value="">全部</option>
+                                        <option value="1">男</option>
+                                        <option value="2">女</option>
+                                    </select>
+                                </div>
+                                <!--<div class="form-group">-->
+                                    <!--<label for="audioUserStatus">入库状态</label>-->
+                                    <!--<select class="form-control" id="audioUserStatus" name="audioUserStatus">-->
+                                        <!--<option value="1">待入库</option>-->
+                                        <!--<option value="2">已入库</option>-->
+                                        <!--<option value="3">入库失败</option>-->
+                                    <!--</select>-->
+                                <!--</div>-->
+                                <div class="form-group">
+                                    <label for="">采集时间</label>
+                                    <div class="c-datepicker-date-editor c-datepicker-single-editor J-datepicker mt10">
+                                        <input type="text" autocomplete="off" name="" id="tableStartTime" placeholder="开始时间" class="c-datepicker-data-input">
+                                    </div>
+                                    <div class="c-datepicker-date-editor c-datepicker-single-editor J-datepicker mt10">
+                                        <input type="text" autocomplete="off" name="" id="tableEndTime" placeholder="结束时间" class="c-datepicker-data-input">
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-customStyle" id="searchBtn">搜索</button>
+                                <button type="button" class="btn btn-customStyle" id="batchAudio">批量上传</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="tableContent">
+                                <table class="table">
+                                    <thead>
+                                    <tr class="active">
+                                        <th><input type="checkbox" class="parentCheck"></th>
+                                        <th>编号</th>
+                                        <th>归属地</th>
+                                        <th>姓名</th>
+                                        <th>身份证号</th>
+                                        <th>性别</th>
+                                        <th>年龄</th>
+                                        <th>采集日期</th>
+                                        <th>入库状态</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="tableContent">
+
+                                    </tbody>
+                                </table>
+                                <div class="page">
+                                    <div class="totalPage">共0条</div>
+                                    <ul class="pagination">
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+<!--查看弹框-->
+<div class="modal fade bs-example-modal-lg" id="seeModal" data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">用户详情</h4>
+            </div>
+            <audio src="" id="myAudio" controls style="display: none"></audio>
+            <div class="modal-body" id="tableModal">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/html" id="tpl_tableContent">
+    <% for(var i = 0; i < list.length ; i++){ %>
+    <% if((i+1)%2 == 0){ %>
+    <tr class="active" id='<%=list[i].audioUserId%>'>
+    <% } else { %>
+    <tr id='<%=list[i].audioUserId%>'>
+    <% } %>
+
+        <% if(list[i].audioUserStatus != '2'){ %>
+        <td><input type="checkbox" class="childCheck"></td>
+        <% } %>
+        <td><%=(pageNum-1)*pageSize+i+1%></td>
+        <td>北京声纹库</td>
+        <td><%=list[i].audioUserName%></td>
+        <td><%=list[i].audioUserIdNumber%></td>
+        <td>
+            <% if(list[i].audioUserSex == '1'){ %>
+            男
+            <% } else { %>
+            女
+            <% } %>
+        </td>
+        <td><%=list[i].userAge%></td>
+        <td><%=list[i].creationTimeStamp%></td>
+        <td>
+            <% if(list[i].audioUserStatus == '1'){ %>
+            待入库
+            <% } else if(list[i].audioUserStatus == '2') { %>
+            已入库
+            <% } else if(list[i].audioUserStatus == '3') { %>
+            入库失败
+            <% } else { %>
+            删除
+            <% } %>
+        </td>
+        <td>
+            <% if(list[i].audioUserStatus == '1'){ %>
+            <button class="btn btn-customStyle btn-xs seeBtn" data-toggle="modal" data-target="#seeModal">查看</button>
+            <button class="btn btn-default btn-xs delBtn">删除</button>
+            <% } else if(list[i].audioUserStatus == '2') { %>
+            <button class="btn btn-customStyle btn-xs seeBtn" data-toggle="modal" data-target="#seeModal">查看</button>
+            <% } else if(list[i].audioUserStatus == '3') { %>
+            <button class="btn btn-customStyle btn-xs reUploadBtn">重新上传</button>
+            <button class="btn btn-default btn-xs delBtn">删除</button>
+            <% } %>
+        </td>
+    </tr>
+    <% } %>
+</script>
+
+<script type="text/html" id="tpl_tableModal">
+    <div>
+        <h4><i class="leftIcon"></i>基本信息</h4>
+        <ul>
+            <li>归属库:北京声纹库</li>
+            <li>专题:重点人员黑名单</li>
+            <li>姓名:<%=audioUserName%></li>
+            <li>身份证:<%=audioUserIdNumber%></li>
+            <li>出生日期:<%=birthdayTimeStamp%></li>
+            <li>
+                <% if(audioUserSex == 1){ %>
+                性别:男
+                <% } else { %>
+                性别:女
+                <% } %>
+            </li>
+            <li>籍贯:<%=audioUserBirthOrigin%></li>
+            <% if(audioUserBirthPlace != ''){ %>
+            <li>出生地:<%=audioUserBirthPlace%></li>
+            <% } %>
+            <% if(audioUserHabitation != ''){ %>
+            <li>长期居住地:<%=audioUserHabitation%></li>
+            <% } %>
+            <% if(audioUserNation != ''){ %>
+            <li>民族:<%=audioUserNation%></li>
+            <% } %>
+            <% if(audioUserDialect != ''){ %>
+            <li>方言:<%=audioUserDialect%></li>
+            <% } %>
+            <% if(audioUserLanguages != ''){ %>
+            <li>语种:<%=audioUserLanguages%></li>
+            <% } %>
+            <% if(audioUserSchooling != ''){ %>
+            <li>学历:<%=audioUserSchooling%></li>
+            <% } %>
+            <% if(audioUserOccupation != ''){ %>
+            <li>职业:<%=audioUserOccupation%></li>
+            <% } %>
+            <% if(audioUserPhoneNumber != ''){ %>
+            <li>联系电话:<%=audioUserPhoneNumber%></li>
+            <% } %>
+            <% if(audioUserAddress != ''){ %>
+            <li>联系地址:<%=audioUserAddress%></li>
+            <% } %>
+            <% if(audioUserComment != ''){ %>
+            <li>备注:<%=audioUserComment%></li>
+            <% } %>
+        </ul>
+    </div>
+    <div>
+        <h4><i class="leftIcon"></i>采集信息</h4>
+        <ul>
+            <li>采集地址:北京</li>
+            <li>采集人职位:刑侦</li>
+            <li>采集人姓名:张三</li>
+            <li>采集所属机构:北京公安局</li>
+        </ul>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr class="active">
+                <th>语音类型</th>
+                <th>语音文件</th>
+                <th>信道</th>
+                <th>信噪比(dB)</th>
+                <th>有效时长(s)</th>
+                <th>文本类型</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% for(var i = 0 ; i < audioOtherInfoList.length ; i++){ %>
+        <tr>
+            <% if(audioOtherInfoList[i].audioOtherType == 1){ %>
+            <td>降噪语音</td>
+            <% }else if(audioOtherInfoList[i].audioOtherType == 2){ %>
+            <td>有效原始语音</td>
+            <% } else if(audioOtherInfoList[i].audioOtherType == 3){%>
+            <td>有效降噪语音</td>
+            <% } else if(audioOtherInfoList[i].audioOtherType == 4){ %>
+            <td>降采样语音</td>
+            <% } else if(audioOtherInfoList[i].audioOtherType == 5){ %>
+            <td>原始语音</td>
+            <% } %>
+            <td><%=audioOtherInfoList[i].audioName%></td>
+            <td>高保真</td>
+            <td><%=audioOtherInfoList[i].signalNoiseRatio%></td>
+            <td><%=audioOtherInfoList[i].validDuration%></td>
+            <td>文本无关</td>
+            <td>
+                <button class="btn btn-customStyle btn-xs btn-play pause" data-audioUrl="<%=audioOtherInfoList[i].audioOtherUrl%>">播放</button>
+            </td>
+        </tr>
+        <% } %>
+        </tbody>
+    </table>
+</script>
+
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="assets/pagination/jquery.pagination.js"></script>
+<script src="assets/datepicker/js/datepicker.all.min.js"></script>
+<script src="assets/datepicker/js/moment.min.js"></script>
+<script src="js/template-web.js"></script>
+<script src="assets/layer/layer.js"></script>
+<script src="js/common.js"></script>
+<script src="js/vioceLibrary.js"></script>
+
+</body>
+</html>

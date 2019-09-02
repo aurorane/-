@@ -1,0 +1,97 @@
+html,body{
+    background: #fff;
+}
+.contain{
+    padding: 24px 42px;
+}
+.tableContent{
+    margin-top: 10px;
+}
+
+.profileCont{
+    background: #fff;
+    /*padding: 20px;*/
+    border-radius: 8px;
+}
+#tableForm{
+    padding: 20px 15px 10px;
+    /*padding-top: 20px;*/
+    /*padding-bottom: 10px;*/
+    background: #F5F7FA;
+}
+#tableForm .form-group{
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+#searchBtn{
+    margin-bottom: 10px;
+}
+#batchAudio{
+    margin-bottom: 10px;
+    float: right;
+}
+#tableModal h4{
+    margin: 10px 0;
+    font-weight: normal;
+    color: #334266;
+}
+#tableModal ul{
+    margin:0 0 20px;
+    border-bottom: 1px dashed #ccc;
+}
+#tableModal li{
+    display: inline-block;
+    padding-bottom: 14px;
+    margin-right: 30px;
+}
+
+
+.status{
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    margin:0px 0 10px;
+    /*padding-bottom: 20px;*/
+}
+.status a{
+    color: #666666;
+    font-size: 16px;
+    padding: 20px 30px;
+    display: inline-block;
+}
+.status a.activeStatue{
+    color: #395AA8;
+    font-weight: 600;
+    border-bottom: 2px solid #395AA8;
+}
+
+
+/*弹框*/
+.modal-header{
+    background: #334266;
+    color: #fff;
+}
+.close{
+    color: #fff;
+    opacity: 1;
+}
+.close:hover{
+    color: #fff;
+    opacity: 0.8;
+}
+.leftIcon{
+    display: inline-block;
+    vertical-align: text-top;
+    width: 4px;
+    height: 18px;
+    background: #334266;
+    margin-right: 6px;
+}
+
+@media (max-width: 768px) {
+    #tableForm .form-group {
+        margin-right: 0px;
+        margin-bottom: 20px;
+    }
+}
+
+
